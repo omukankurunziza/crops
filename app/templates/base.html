@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Welcome to my Crop website </title>
+        {% endif %} 
+        {% extends 'bootstrap/base.html'%}
+
+        <!-- Navbar block  -->
+        {% block navbar %}
+            {% include 'navbar.html' %}
+        {% endblock %}
+
+        {%block styles %}
+        {{super()}}
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Ranga" rel="stylesheet">
+        <!--Importing the simple mde css and js files  -->
+        {{ simplemde.css}}
+        {{ simplemde.js }}
+
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Content block -->
+
+        {% block content %}
+
+        {% endblock%}
+    </body>
+</html>

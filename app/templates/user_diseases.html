@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+<!-- Content block -->
+{%block content%}
+<div class="container">
+    <h1>Display symptoms</h1>
+    <hr>
+    {{macro.displaySymptom(symptoms)}}
+    <a href="/user_diseases/{{user_diseases.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px;">Approve</a>
+</div>
+{%endblock%}

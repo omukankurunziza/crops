@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Welcome </title>
+        {% endif %}
+        {% extends 'base.html'%}
+        {% import 'macros.html' as macro%}
+
+        <!-- Styles block -->
+
+        
+    </head>
+        
+    <body>
+        {%block content%}
+        <div class="jumbotron text-center" style="background-color:teal; color: #fff; padding: 55px 25px; font-family: Times New Roman, Times, serif;">
+                <h1> CROPS DISEASES </h1>
+
+                
+        </div>
+        <div class="container" style="text-align:center;">
+        <div class="row" style="margin-bottom:80px;">
+        
+        </div>
+        </div>
+        
+
+        </div>
+        <div class="container" style= "font-family: 'Cormorant Upright', serif;">
+                <h1>Recent Diseases</h1>
+                <hr>
+                {{macro.displayDiseases(diseases)}}
+                <a href="{{url_for('main.subscribe')}}" class="btn btn-success", style="margin-top:110px;">Subscribe</a>
+        </div>
+        {%endblock%}
+    </body>
+</html>

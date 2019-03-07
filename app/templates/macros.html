@@ -1,0 +1,13 @@
+{% macro displayDiseases(post_list)%}
+    {%for disease in disease%}
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="well well-lg" style="background-color: white;">
+            <h4>{{disease.title}}</h4>
+            <p>{{disease.text| truncate(120)}}</p>
+            <p>Posted on: {{disease.date_posted.strftime('%Y-%m-%d')}} <a href="/post/{{post.id}}" class="btn btn-primary pull-right">Read</a></p>
+            <a href="/delete_disease/{{disease.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px;">Delete Crop</a>
+            <!-- <a href="/update_post/{{post.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px;">Update Blog</a> -->
+        </div>
+    </div>
+    {%endfor%}
+{%endmacro%}
