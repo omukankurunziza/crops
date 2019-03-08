@@ -183,18 +183,18 @@ def all_symptoms():
 
 
 @main.route('/symptom/<int:id>', methods=['GET', 'POST'])
-def symptom(id):
+def symptom_detail(id):
     form = CommentForm()
     symptom = Disease.get_disease(id)
 
     if form.validate_on_submit():
         comment = form.names.data
         username = form.symptoms.data
-        new_comment = Comment(username=username,comment=comment, disease=disease.id)
+        new_comment = Comment(username=username,comment=comment, symptom=symptom)
 
         new_comment.save_comment()
 
-    comments = Comment.get_comments(disease)
+    comments = Comment.get_comments(symptom)
 
     title = f'{symptom.name}'
     return render_template('symptom.html', title=title, symptom=symptom, form=form, comments=comments)

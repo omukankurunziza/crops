@@ -6,7 +6,7 @@
     <p>
       Posted on: {{ disease.date_posted.strftime("%Y-%m-%d") }}
       <a href="/disease/{{ disease.id }}" class="btn btn-primary pull-right"
-        >Read</a
+        >Read More</a
       >
     </p>
 
@@ -21,7 +21,7 @@ symptoms%}
     <p>
       Posted on: {{ symptom.date_posted.strftime("%Y-%m-%d") }}
       <a href="/symptom/{{ symptom.id }}" class="btn btn-primary pull-right"
-        >Read</a
+        >Comment</a
       >
       <a href="{{ url_for('main.new_disease', id=symptom.id) }}"
       class="btn btn-info pull-right"><strong>Approve</strong></a

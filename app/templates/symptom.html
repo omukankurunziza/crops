@@ -8,15 +8,15 @@
 <!-- Content block -->
 {%block content%}
 <div class="container">
-    <div class="row" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqYWYhiSufkWFYi_raJYQVx1QwjtdQWkJCWPVzcthAkWS3Z7dIyw'); background-repeat: no-repeat; background-size: cover;">
-        <h3>{{disease.name}}</h3>
+    <div class="row" style="background-image:url(''); background-repeat: no-repeat; background-size: cover;">
+        <h3>{{symptom.name}}</h3>
         <hr>
-        <p>{{disease.symptoms}}</p>
+        <p>{{symptom.symptoms}}</p>
         <span>
-        <p>Posted on {{disease.date_posted.strftime('%Y-%m-%d')}}</p>
+        <p>Posted on {{symptom.date_posted.strftime('%Y-%m-%d')}}</p>
         {% if current_user.is_authenticated and current_user.role_id == 1%}
-            <a href="{{url_for('main.delete_disease',id = disease.id)}}" class="btn btn-danger btn-sm" >Delete post</a>
-            <a href="/disease/update/{{disease.id}}" class="btn btn-info btn-sm">Update disease</a>
+            <a href="{{url_for('main.delete_disease',id = symptom.id)}}" class="btn btn-danger btn-sm" >Delete post</a>
+            <a href="/disease/update/{{symptom.id}}" class="btn btn-info btn-sm">Update disease</a>
         {%endif%}
     </div>
     <div class="row">
