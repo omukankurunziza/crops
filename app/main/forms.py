@@ -4,6 +4,7 @@ from wtforms.validators import Required
 from ..models import Subscribe
 
 class DiseaseForm(FlaskForm):
+    # image = FileField('Article_image', validators=[FileRequired()])
     name = StringField('Name', validators=[Required()])
     symptoms = TextAreaField('Symptoms', validators=[Required()])
     control = StringField('Control', validators=[Required()])
@@ -22,14 +23,9 @@ class CommentForm(FlaskForm):
     symptoms = TextAreaField('Leave a comment:', validators=[Required()])
     submit = SubmitField('Submit')
 
-class AgronomistForm(FlaskForm):
-    name = StringField('Name', validators=[Required()])
-    title = TextAreaField('Leave a title:', validators=[Required()])
-    submit = SubmitField('Submit')
-
-class User_diseasesForm(FlaskForm):
-    symptom = StringField('Symptom', validators=[Required()])
-    submit = SubmitField('Submit')
+class SymptomForm(FlaskForm):
+    symptoms = TextAreaField('Symptoms', validators=[Required()])
+    submit = SubmitField('Submit', validators=[Required()])
 
 
 # class SubscribeForm(FlaskForm):

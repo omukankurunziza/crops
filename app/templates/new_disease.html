@@ -1,15 +1,12 @@
-{% extends 'base.html'%}
-{% import "bootstrap/wtf.html" as wtf %}
-
-{% block content %}
-    <div class="container">
-        <div class="col-md-12">
-            <h3>Write a disease</h3>
-            <hr>
-            {{ wtf.quick_form(disease_form) }}
-            <!-- {{simplemde.load}} -->
-        </div>
-
-    </div>
+{% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block
+content %}
+<div class="container">
+  <div class="col-md-12">
+    <h3>Write a disease</h3>
+    <hr />
+    {{ wtf.quick_form(disease_form) }}
+    <!-- {{simplemde.load}} -->
+  </div>
+</div>
 
 {% endblock %}

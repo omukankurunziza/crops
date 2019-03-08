@@ -61,8 +61,8 @@ class Disease(db.Model):
     category = db.Column(db.String())
     symptoms = db.Column(db.String())
     control = db.Column(db.String())
+    approved = db.Column(db.String())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    agronomist_id = db.Column(db.Integer, db.ForeignKey('agronomist.id'))
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
 
     comments = db.relationship('Comment', backref='disease_id', lazy='dynamic')
@@ -75,28 +75,22 @@ class Disease(db.Model):
         disease = Disease.query.filter_by(id=id).first()
         return disease
 
-class Agronomist(db.Model):
-    __tablename__ ='agronomist'
+
+
+class Symptom(db.Model):
+    __tablename__ ='symptoms'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String())
-    title = db.Column(db.String())
-    diseases = db.relationship('Disease', backref='agronomist', lazy='dynamic')
-    user_diseases = db.relationship('User_diseases', backref='agronomist', lazy='dynamic')
+    symptom = db.Column(db.String())
+   
 
-    def __repr__(self):
-        return f'{self.name}'
-
-class User_diseases(db.Model):
-    __tablename__ ='user_diseases'
-
-    id = db.Column(db.Integer, primary_key=True)
-    symptoms = db.Column(db.String())
-    agronomist_id = db.Column(db.Integer, db.ForeignKey('agronomist.id'))
-
-    def save_user_diseases(self):
+    def save_symptom(self):
         db.session.add(self)
         db.session.commit()
+        
+    def get_symptom(id):
+        symptom = Symptom.query.filter_by(id=id).first()
+        return symptom
 
 
 class Comment(db.Model):
@@ -106,7 +100,7 @@ class Comment(db.Model):
     comment = db.Column(db.String(1000))
     username = db.Column(db.String(1000))
 
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     disease = db.Column(db.Integer, db.ForeignKey('diseases.id'))
 
     def save_comment(self):

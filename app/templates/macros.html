@@ -1,13 +1,32 @@
-{% macro displayDiseases(post_list)%}
-    {%for disease in disease%}
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        <div class="well well-lg" style="background-color: white;">
-            <h4>{{disease.title}}</h4>
-            <p>{{disease.text| truncate(120)}}</p>
-            <p>Posted on: {{disease.date_posted.strftime('%Y-%m-%d')}} <a href="/post/{{post.id}}" class="btn btn-primary pull-right">Read</a></p>
-            <a href="/delete_disease/{{disease.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px;">Delete Crop</a>
-            <!-- <a href="/update_post/{{post.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px;">Update Blog</a> -->
-        </div>
-    </div>
-    {%endfor%}
-{%endmacro%}
+{% macro displayDiseases(diseases)%} {%for disease in diseases%}
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <div class="well well-lg" style="background-color: white;">
+    <h4>{{ disease.name }}</h4>
+    <p>{{disease.symptoms| truncate(120)}}</p>
+    <p>
+      Posted on: {{ disease.date_posted.strftime("%Y-%m-%d") }}
+      <a href="/disease/{{ disease.id }}" class="btn btn-primary pull-right"
+        >Read</a
+      >
+    </p>
+
+    <!-- <a href="/update_post/{{disease.id}}" class="btn btn-primary pull-right" style="margin-bottom:60px;">Update Blog</a> -->
+  </div>
+</div>
+{%endfor%} {%endmacro%} {% macro displaySymptom(symptoms)%} {%for symptom in
+symptoms%}
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <div class="well well-lg" style="background-color: white;">
+    <p>{{symptom.symptoms| truncate(120)}}</p>
+    <p>
+      Posted on: {{ symptom.date_posted.strftime("%Y-%m-%d") }}
+      <a href="/symptom/{{ symptom.id }}" class="btn btn-primary pull-right"
+        >Read</a
+      >
+      <a href="{{ url_for('main.new_disease', id=symptom.id) }}"
+      class="btn btn-info pull-right"><strong>Approve</strong></a
+      >
+    </p>
+  </div>
+</div>
+{%endfor%} {%endmacro%}
