@@ -99,7 +99,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(1000))
     username = db.Column(db.String(1000))
-
+    
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     disease = db.Column(db.Integer, db.ForeignKey('diseases.id'))
 

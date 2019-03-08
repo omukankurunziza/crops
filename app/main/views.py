@@ -190,7 +190,7 @@ def symptom_detail(id):
     if form.validate_on_submit():
         comment = form.names.data
         username = form.symptoms.data
-        new_comment = Comment(username=username,comment=comment, symptom=symptom)
+        new_comment = Comment(username=username,comment=comment)
 
         new_comment.save_comment()
 
